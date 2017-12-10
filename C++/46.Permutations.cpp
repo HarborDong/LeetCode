@@ -5,7 +5,8 @@ public:
         int temp = 0;
         if(startIndex == nums.end() - 1) {
             res.push_back(nums);
-        }
+            return;
+	}
         
         for(index = startIndex; index < nums.end(); index++) {
             //if(index != startIndex && *index == temp) continue;
