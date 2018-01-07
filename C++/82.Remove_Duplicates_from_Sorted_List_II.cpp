@@ -28,8 +28,7 @@ public:
                 cur->next = 0;
                 cur = next;
             } else {
-                pre = cur;
-                cur = cur->next; 
+                pre = cur;　cur = cur->next; 
             }
         }
         return head;
