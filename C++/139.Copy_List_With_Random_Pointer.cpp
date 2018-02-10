@@ -38,3 +38,37 @@ public:
         return headCopy;        
     }
 };
+/**
+ * method 2
+ */
+class Solution {
+public:
+    RandomListNode *copyRandomList(RandomListNode *head) {
+        RandomListNode *node = NULL, *pre = NULL, *headCopy = NULL, *copy = NULL; 
+        if(!head) return NULL; 
+        node = head;
+        while(node) {
+            copy = new RandomListNode(node->label);
+            copy->next = node->next;
+            node->next = copy;
+            node = copy->next;
+        }
+        node = head;
+        while(node) {
+            if(node->random)
+                node->next->random = node->random->next;
+            node = node->next->next;
+        }
+        node = head;
+        headCopy = node->next;
+        while(node) {
+            copy = node->next;
+            if(pre) pre->next = copy;
+            node->next = node->next->next;
+            node = node->next;
+            pre = copy;
+        }
+        return headCopy;
+    }
+};
+
